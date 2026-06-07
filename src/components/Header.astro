@@ -1,20 +1,25 @@
 ---
-import "../styles/global.css";
+import logo from '../assets/logo.svg';
+
 import { Image } from 'astro:assets';
 ---
 
-<header>
-    <div class="flex align-middle h-full">
-        <a href="/">
-            <Image src="/favicon.svg" alt="Logo" width="50" height="50"/>
-        </a>
+<header class="sticky top-0 bg-white">
+    <h1 class="hidden">Icy Electronics</h1>
+    <div class="flex h-full">
+        <div class="p-2">
+            <a href="/">
+                <Image src={logo} alt="" width="50" height="50"/>
+            </a>
+        </div>
 
-        <div class="h-full w-full">
-            <ul class="flex justify-around">
-                <li><a href="#">Products</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Downloads</a></li>
-                <li><a href="#">Contact</a></li>
+        <div class="h-full w-full place-self-center">
+            <ul class="flex justify-around text-lg font-medium text-gray-800">
+                <li><a href="/">Home</a></li>
+                <li><a href="/store/all-products">Products</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/about-us">About Us</a></li>
             </ul>
         </div>
     </div>

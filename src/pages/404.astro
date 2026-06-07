@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+import logo from "../assets/logo.svg";
+
+import { Image } from "astro:assets";
+---
+
+<Layout class="bg-sky-100" class="flex items-center justify-center">
+    <div class="text-center items-center justify-center">
+        <div class="flex justify-center">
+            <Image src={logo} alt="" />
+        </div>
+        <p class="text-2xl text-gray-800 pb-1">404 Page not Found</p>
+        <p class="text-sm text-gray-500"><a href="/">Return to homepage</a></p>
+    </div>
+</Layout>
