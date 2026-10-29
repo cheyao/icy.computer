@@ -1,0 +1,108 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+import icepiZero from "../assets/products/icepi-zero.jpg";
+import comu from "../assets/products/comu.jpg";
+import nrf54l15Discovery from "../assets/products/nrf54l15-discovery.jpg";
+
+type Product = {
+    name: string;
+    href: string;
+    // Omitted until the product launches
+    price?: number;
+    soldOut: boolean;
+    image?: ImageMetadata;
+    buyLinks?: { label: string; href: string }[];
+};
+
+const featuredProducts: Product[] = [
+    {
+        name: "Icepi Zero",
+        href: "https://www.crowdsupply.com/icy-electronics/icepi-zero/",
+        price: 79.0,
+        soldOut: false,
+        image: icepiZero,
+        buyLinks: [
+            { label: "Crowd Supply", href: "https://www.crowdsupply.com/icy-electronics/icepi-zero/" },
+            { label: "Elecrow", href: "https://www.elecrow.com/icepi-zero.html" },
+        ],
+    },
+    {
+        name: "Comu",
+        href: "https://www.crowdsupply.com/icy-electronics/comu",
+        soldOut: false,
+        image: comu,
+        buyLinks: [{ label: "Crowd Supply", href: "https://www.crowdsupply.com/icy-electronics/comu" }],
+    },
+    {
+        name: "nRF54L15 Discovery",
+        href: "https://lectronz.com/products/nrf54l15-discovery",
+        price: 26.53,
+        soldOut: false,
+        image: nrf54l15Discovery,
+        buyLinks: [{ label: "Lectronz", href: "https://lectronz.com/products/nrf54l15-discovery" }],
+    },
+];
+
+const formatPrice = (price: number) =>
+    new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(price);
+---
+
+<ul class="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:grid-cols-4">
+    {
+        featuredProducts.map((product) => (
+            <li class="group flex flex-col">
+                <a href={product.href} class="block">
+                    <div class="relative aspect-square overflow-hidden rounded-lg bg-sky-50">
+                        {product.image ? (
+                            <Image
+                                src={product.image}
+                                alt={product.name}
+                                width={600}
+                                class="h-full w-full bg-white object-contain transition-transform duration-300 group-hover:scale-105"
+                            />
+                        ) : (
+                            <div class="flex h-full items-center justify-center text-sm text-gray-400 transition-transform duration-300 group-hover:scale-105">
+                                Image coming soon
+                            </div>
+                        )}
+                        {product.soldOut && (
+                            <span class="absolute bottom-2 left-2 rounded-full bg-gray-800 px-3 py-1 text-xs font-medium text-white">
+                                Sold out
+                            </span>
+                        )}
+                    </div>
+                    <h3 class="mt-4 text-lg font-medium text-gray-800 group-hover:underline">
+                        {product.name}
+                    </h3>
+                </a>
+                <p class="mt-1 text-gray-700">
+                    {product.price === undefined ? "Coming soon" : formatPrice(product.price)}
+                </p>
+                {product.buyLinks ? (
+                    <div class="mt-3 flex gap-2">
+                        {product.buyLinks.map((link) => (
+                            <a
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener"
+                                class="flex-1 rounded-md border border-teal-600 px-2 py-2 text-center text-sm font-medium text-teal-700 hover:bg-teal-600 hover:text-white"
+                            >
+                                {link.label}
+                            </a>
+                        ))}
+                    </div>
+                ) : (
+                    <button
+                        type="button"
+                        disabled={product.soldOut}
+                        class="mt-3 w-full rounded-md border border-teal-600 px-4 py-2 text-sm font-medium text-teal-700 hover:bg-teal-600 hover:text-white disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-400 disabled:hover:bg-transparent"
+                    >
+                        {product.soldOut ? "Sold out" : "Add"}
+                    </button>
+                )}
+            </li>
+        ))
+    }
+</ul>
