@@ -2,5 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout>
+<Layout title="Contact">
+    <div class="max-w-3xl mx-auto px-2 py-6 pb-8">
+        <h1 class="text-3xl font-bold mb-2 pt-6">Contact</h1>
+
+        <dl class="mt-6 grid grid-cols-[max-content_1fr] gap-x-8 gap-y-2 text-lg text-gray-800">
+            <dt class="font-medium">Email</dt>
+            <dd><a href="mailto:support@icy.computer" class="underline hover:no-underline">support@icy.computer</a></dd>
+            <dt class="font-medium">Discord</dt>
+            <dd><a href="https://discord.gg/vzrqfhcvWr" class="underline hover:no-underline">discord.gg/vzrqfhcvWr</a></dd>        </dl>
+    </div>
 </Layout>
