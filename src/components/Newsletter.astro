@@ -2,7 +2,7 @@
 const { class: className } = Astro.props;
 ---
 
-<div class={className}>
+<div class:list={["newsletter-form-container", className]}>
     <form
         class="newsletter-form"
         action="https://app.loops.so/api/newsletter-form/cmiukv12c3cdyzg0heijn2b5b"
