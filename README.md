@@ -1,46 +1,25 @@
-# Astro Starter Kit: Basics
+# icy.computer website
 
-```sh
-npm create astro@latest -- --template basics
+Check it out here: [icy.computer](https://icy.computer)
+
+![](https://files.catbox.moe/sgpr53.png)
+
+Very basic astro code that provides a nice card view of all my projects :)
+
+Pnpm builds everything into a static site, so anything capable of hosting http is able to deploy the site. Personally I use Caddy file_server to serve everything statically.
+
+It includes a nice header and footer. To add more items go into `src/Components/ProductGrid.astro` and edit `featuredProducts`.
+
+Feel free to fork it or anything.
+
+## Building
+
+Requirements: pnpm
+
+```
+$ pnpm install
+$ pnpm build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Now you can find the compiled static site in the `build` folder.
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
